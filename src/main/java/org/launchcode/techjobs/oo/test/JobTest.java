@@ -71,7 +71,7 @@ public class JobTest {
     }
     @Test
     public void testToStringContainsCorrectLabelsAndData(){
-        assertTrue(String.valueOf(true), job3.toString().
+        assertEquals(true, job3.toString().
                 equals("\nID: " + job3.getId() +
                         "\nName: " + job3.getName() +
                         "\nEmployer: " + job3.getEmployer().getValue() +
@@ -81,7 +81,7 @@ public class JobTest {
     }
     @Test
     public void testToStringHandlesEmptyField(){
-        assertTrue(String.valueOf(true), job5.toString().contains("Data not available"));
+        assertEquals(true, job5.toString().contains("Data not available"));
     }
 
 
