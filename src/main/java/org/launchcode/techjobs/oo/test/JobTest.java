@@ -4,9 +4,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import org.launchcode.techjobs.oo.Job;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotEquals;
+import org.launchcode.techjobs.oo.*;
+
+import static org.junit.Assert.*;
 
 /**
  * Created by LaunchCode
@@ -19,6 +19,8 @@ public class JobTest {
         Job job2 = new Job();
         Job job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
                 new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job4 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+            new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
     //}
     @Test
@@ -33,5 +35,34 @@ public class JobTest {
     public void testJobConstructorSetsAllFields(){
         assertEquals(true, job3 instanceof Job);
     }
+    @Test
+    public void testJobConstructorSetsName(){
+        assertEquals("Product tester", job3.getName());
+    }
+    @Test
+    public void testJobConstructorSetsEmployer(){
+        assertEquals("ACME", job3.getEmployer().getValue());
+    }
+    @Test
+    public void testJobConstructorSetsLocation(){
+        assertEquals("Desert", job3.getLocation().getValue());
+    }
+    @Test
+    public void testJobConstructorSetsPosition(){
+        assertTrue(String.valueOf(true), job3.getPositionType().getValue()=="Quality control");
+    }
+    @Test
+    public void testJobConstructorSetsId(){
+        assertTrue(String.valueOf(true), job3.getId()==3);
+    }
+    @Test
+    public void testJobsIdsAreDifferent(){
+        assertFalse(String.valueOf(false), job3.getId()==job4.getId());
+    }
+    @Test
+    public void testJobsForEquality(){
+        assertFalse(String.valueOf(false), job3.equals(job4));
+    }
+
 
 }
