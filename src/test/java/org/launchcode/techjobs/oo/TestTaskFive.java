@@ -4,7 +4,7 @@ import mockit.Expectations;
 import mockit.Mocked;
 import org.junit.Assert;
 import org.junit.Test;
-import org.launchcode.techjobs.oo.test.JobTest;
+import org.launchcode.techjobs.oo.tests.JobTest;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -47,7 +47,7 @@ public class TestTaskFive extends AbstractTest {
     }
 
     @Test
-    public void testTestToStringStartsAndEndsWithNewLineCallsAssertions (@Mocked Assert mockedAssert) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
+    public void testTestToStringStartsAndEndsWithNewLineCallsAssertions () throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
         Class jobTestClass = getClassByName("test.JobTest");
         JobTest jobTest = (JobTest) jobTestClass.getConstructor().newInstance();
         Method testToStringStartsAndEndsWithNewLineMethod = jobTestClass.getMethod("testToStringStartsAndEndsWithNewLine");
@@ -98,7 +98,7 @@ public class TestTaskFive extends AbstractTest {
     }
 
     @Test
-    public void testTestToStringContainsCorrectLabelsAndDataCallsAssertions (@Mocked Assert mockedAssert) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
+    public void testTestToStringContainsCorrectLabelsAndDataCallsAssertions () throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
         Class jobTestClass = getClassByName("test.JobTest");
         JobTest jobTest = (JobTest) jobTestClass.getConstructor().newInstance();
         Method testToStringContainsCorrectLabelsAndDataMethod = jobTestClass.getMethod("testToStringContainsCorrectLabelsAndData");
@@ -147,7 +147,7 @@ public class TestTaskFive extends AbstractTest {
     }
 
     @Test
-    public void testTestToStringHandlesEmptyFieldCallsAssertions (@Mocked Assert mockedAssert) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
+    public void testTestToStringHandlesEmptyFieldCallsAssertions () throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
         Class jobTestClass = getClassByName("test.JobTest");
         JobTest jobTest = (JobTest) jobTestClass.getConstructor().newInstance();
         Method testToStringHandlesEmptyField = jobTestClass.getMethod("testToStringHandlesEmptyField");
