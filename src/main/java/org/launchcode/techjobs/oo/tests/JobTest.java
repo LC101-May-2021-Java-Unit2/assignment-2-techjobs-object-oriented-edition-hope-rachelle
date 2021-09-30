@@ -1,4 +1,4 @@
-package org.launchcode.techjobs.oo.test;
+package org.launchcode.techjobs.oo.tests;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
  */
 @RunWith(JUnit4.class)
 public class JobTest {
-    Job job1;
+    /*Job job1;
     Job job2;
     Job job3;
     Job job4;
@@ -29,9 +29,11 @@ public class JobTest {
         job5 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
             new PositionType("Quality control"), new CoreCompetency(""));
 
-    }
+    }*/
     @Test
     public void testSettingJobId(){
+        Job job1 = new Job();
+        Job job2 = new Job();
         assertNotEquals(job1.getId(), job2.getId());
     }
     @Test
@@ -52,14 +54,23 @@ public class JobTest {
 
     @Test
     public void testJobsForEquality(){
+        Job job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        Job job4 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertEquals(false, job3.equals(job4));
     }
     @Test
     public void testToStringStartsAndEndsWithNewLine(){
+        Job job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+            new PositionType("Quality control"), new CoreCompetency("Persistence"));
         assertTrue(String.valueOf(true), job3.toString().startsWith("\n"));
+        assertTrue(String.valueOf(true), job3.toString().endsWith("\n"));
     }
     @Test
     public void testToStringContainsCorrectLabelsAndData(){
+        Job job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency("Persistence"));
         String expected = "\nID: " + job3.getId() +
                 "\nName: " + job3.getName() +
                 "\nEmployer: " + job3.getEmployer().getValue() +
@@ -70,6 +81,9 @@ public class JobTest {
     }
     @Test
     public void testToStringHandlesEmptyField(){
+        Job job5 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+                new PositionType("Quality control"), new CoreCompetency(""));
+
         String expected = "\nID: " + job5.getId() + "\n" +
                 "Name: " + job5.getName() + "\n" +
                 "Employer: " + job5.getEmployer() + "\n" +
