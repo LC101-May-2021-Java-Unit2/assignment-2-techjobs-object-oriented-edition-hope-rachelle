@@ -13,61 +13,69 @@ import static org.junit.Assert.*;
  */
 @RunWith(JUnit4.class)
 public class JobTest {
-    //@Before
-     //public void createNewJobs() {
-        Job job1 = new Job();
-        Job job2 = new Job();
-        Job job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+    Job job1;
+    Job job2;
+    Job job3;
+    Job job4;
+    Job job5;
+    @Before
+     public void createTestJobs() {
+        job1 = new Job();
+        job2 = new Job();
+        job3 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
                 new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        Job job4 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+        job4 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
                 new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        Job job5 = new Job("", new Employer("ACME"), new Location("Desert"),
+        job5 = new Job("", new Employer("ACME"), new Location("Desert"),
             new PositionType("Quality control"), new CoreCompetency("Persistence"));
 
-    //}
-    @Test
-    public void testSettingJobId(){
-      assertEquals(1, job2.getId() - job1.getId(), .001);
     }
     @Test
-    public void testJobId(){
+    public void testSettingJobId(){
         assertNotEquals(0, job2.getId() - job1.getId(), .001);
     }
     @Test
     public void testJobConstructorSetsAllFields(){
-        assertEquals(true, job3 instanceof Job);
+        //assertEquals(true, job3 instanceof Job);
+        assertTrue("true", job3 instanceof Job);
+    }
+    @Test
+    public void testConstructorSetId(){
+        System.out.println(job3.getId());
+        assertEquals(3, job3.getId());
+        //assertTrue("true", job3.getId()==3);
     }
     @Test
     public void testJobConstructorSetsName(){
         assertEquals("Product tester", job3.getName());
+        //assertTrue(String.valueOf(true), job3.getName()=="Product tester");
     }
     @Test
     public void testJobConstructorSetsEmployer(){
         assertEquals("ACME", job3.getEmployer().getValue());
+        //assertTrue(String.valueOf(true), job3.getEmployer().getValue()=="ACME");
     }
     @Test
     public void testJobConstructorSetsLocation(){
         assertEquals("Desert", job3.getLocation().getValue());
+        //assertTrue(String.valueOf(true), job3.getLocation().getValue()=="Desert");
     }
     @Test
     public void testJobConstructorSetsPosition(){
-        assertTrue(String.valueOf(true), job3.getPositionType().getValue()=="Quality control");
+        assertEquals("Quality control", job3.getPositionType().getValue());
+        //assertTrue(String.valueOf(true), job3.getPositionType().getValue()=="Quality control");
     }
-    /*@Test
-    public void testJobConstructorSetsId(){
-        assertTrue(String.valueOf(true), job3.getId()==3);
-    }*/
     @Test
     public void testJobsIdsAreDifferent(){
-        assertFalse(String.valueOf(false), job3.getId()==job4.getId());
+        assertNotEquals(true, (job3.getId())==(job4.getId()));
     }
     @Test
     public void testJobsForEquality(){
-        assertFalse(String.valueOf(false), job3.equals(job4));
+        assertNotEquals(true, job3.equals(job4));
     }
     @Test
     public void testToStringStartsAndEndsWithNewLine(){
-        assertEquals(true, job3.toString().startsWith("\n"));
+        assertTrue(String.valueOf(true), job3.toString().startsWith("\n"));
     }
     @Test
     public void testToStringContainsCorrectLabelsAndData(){
@@ -81,7 +89,7 @@ public class JobTest {
     }
     @Test
     public void testToStringHandlesEmptyField(){
-        assertEquals(true, job5.toString().contains("Data not available"));
+        assertTrue(String.valueOf(true), job5.toString().contains("Data not available"));
     }
 
 
