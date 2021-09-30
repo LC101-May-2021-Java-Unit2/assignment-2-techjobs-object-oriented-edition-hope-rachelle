@@ -8,11 +8,12 @@ public abstract class JobField {
     private String value;
 
     public JobField() {
-        id = nextId;
+        this.id = nextId;
         nextId++;
     }
 
     public JobField(String value) {
+        this();
         this.value = value;
     }
 
@@ -43,6 +44,6 @@ public abstract class JobField {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getValue());
+        return Objects.hash(getId());
     }
 }

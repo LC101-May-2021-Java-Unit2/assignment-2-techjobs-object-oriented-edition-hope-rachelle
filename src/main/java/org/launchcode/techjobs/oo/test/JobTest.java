@@ -26,52 +26,33 @@ public class JobTest {
                 new PositionType("Quality control"), new CoreCompetency("Persistence"));
         job4 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
                 new PositionType("Quality control"), new CoreCompetency("Persistence"));
-        job5 = new Job("", new Employer("ACME"), new Location("Desert"),
-            new PositionType("Quality control"), new CoreCompetency("Persistence"));
+        job5 = new Job("Product tester", new Employer("ACME"), new Location("Desert"),
+            new PositionType("Quality control"), new CoreCompetency(""));
 
     }
     @Test
     public void testSettingJobId(){
-        assertNotEquals(0, job2.getId() - job1.getId(), .001);
+        assertNotEquals(job1.getId(), job2.getId());
     }
     @Test
-    public void testJobConstructorSetsAllFields(){
-        //assertEquals(true, job3 instanceof Job);
-        assertTrue("true", job3 instanceof Job);
+    public void testJobConstructorSetsAllFields() {
+        Job job = new Job("Product tester", new Employer("ACME"), new Location("Desert"), new PositionType("Quality control"), new CoreCompetency("Persistence"));
+
+        assertEquals("Product tester", job.getName().toString());
+        assertEquals("ACME", job.getEmployer().toString());
+        assertEquals("Desert", job.getLocation().toString());
+        assertEquals("Quality control", job.getPositionType().toString());
+        assertEquals("Persistence", job.getCoreCompetency().toString());
+        assertTrue(job instanceof Job);
+        assertTrue(job.getEmployer() instanceof Employer);
+        assertTrue(job.getLocation() instanceof Location);
+        assertTrue(job.getPositionType() instanceof PositionType);
+        assertTrue(job.getCoreCompetency() instanceof CoreCompetency);
     }
-    @Test
-    public void testConstructorSetId(){
-        System.out.println(job3.getId());
-        assertEquals(3, job3.getId());
-        //assertTrue("true", job3.getId()==3);
-    }
-    @Test
-    public void testJobConstructorSetsName(){
-        assertEquals("Product tester", job3.getName());
-        //assertTrue(String.valueOf(true), job3.getName()=="Product tester");
-    }
-    @Test
-    public void testJobConstructorSetsEmployer(){
-        assertEquals("ACME", job3.getEmployer().getValue());
-        //assertTrue(String.valueOf(true), job3.getEmployer().getValue()=="ACME");
-    }
-    @Test
-    public void testJobConstructorSetsLocation(){
-        assertEquals("Desert", job3.getLocation().getValue());
-        //assertTrue(String.valueOf(true), job3.getLocation().getValue()=="Desert");
-    }
-    @Test
-    public void testJobConstructorSetsPosition(){
-        assertEquals("Quality control", job3.getPositionType().getValue());
-        //assertTrue(String.valueOf(true), job3.getPositionType().getValue()=="Quality control");
-    }
-    @Test
-    public void testJobsIdsAreDifferent(){
-        assertNotEquals(true, (job3.getId())==(job4.getId()));
-    }
+
     @Test
     public void testJobsForEquality(){
-        assertNotEquals(true, job3.equals(job4));
+        assertEquals(false, job3.equals(job4));
     }
     @Test
     public void testToStringStartsAndEndsWithNewLine(){
@@ -79,17 +60,23 @@ public class JobTest {
     }
     @Test
     public void testToStringContainsCorrectLabelsAndData(){
-        assertEquals(true, job3.toString().
-                equals("\nID: " + job3.getId() +
-                        "\nName: " + job3.getName() +
-                        "\nEmployer: " + job3.getEmployer().getValue() +
-                        "\nLocation: " + job3.getLocation().getValue() +
-                        "\nPosition Type: " + job3.getPositionType().getValue() +
-                        "\nCore Competency: " + job3.getCoreCompetency().getValue()));
+        String expected = "\nID: " + job3.getId() +
+                "\nName: " + job3.getName() +
+                "\nEmployer: " + job3.getEmployer().getValue() +
+                "\nLocation: " + job3.getLocation().getValue() +
+                "\nPosition Type: " + job3.getPositionType().getValue() +
+                "\nCore Competency: " + job3.getCoreCompetency().getValue() + "\n";
+        assertEquals(expected, job3.toString());
     }
     @Test
     public void testToStringHandlesEmptyField(){
-        assertTrue(String.valueOf(true), job5.toString().contains("Data not available"));
+        String expected = "\nID: " + job5.getId() + "\n" +
+                "Name: " + job5.getName() + "\n" +
+                "Employer: " + job5.getEmployer() + "\n" +
+                "Location: " + job5.getLocation() + "\n" +
+                "Position Type: " + job5.getPositionType()+ "\n" +
+                "Core Competency: Data not available" + "\n";
+        assertEquals(expected, job5.toString());
     }
 
 
